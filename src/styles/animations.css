@@ -1,0 +1,151 @@
+/* Modern Smooth Animations & Effects */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(-4px) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes view-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.view-enter {
+  animation: view-in 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-border-beam {
+  animation: border-beam var(--duration, 12s) infinite linear;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.12); opacity: 0.35; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+@keyframes shiny-sweep {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Subtle float for badges, icons, and hero elements */
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-float {
+  animation: float-subtle 4s ease-in-out infinite;
+}
+
+/* Breathing ambient glow for primary highlights */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+    filter: drop-shadow(0 0 12px rgba(254, 215, 184, 0.25));
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 20px rgba(254, 215, 184, 0.5));
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3.5s ease-in-out infinite;
+}
+
+/* Staggered card entry */
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up-fade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Smooth Interactive Card Hover */
+.card-smooth {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-smooth:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -4px rgba(89, 23, 27, 0.08), 0 4px 10px -2px rgba(89, 23, 27, 0.04);
+}
+
+.dark .card-smooth:hover {
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.6), 0 0 16px rgba(254, 215, 184, 0.06);
+}
+
+/* Smooth Button Hover Micro-interactions */
+.btn-smooth {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+}
+
+.btn-smooth:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-smooth:active:not(:disabled) {
+  transform: translateY(0.5px) scale(0.98);
+}
+
+/* Smooth Glassmorphism pill */
+.glass-pill {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .skeleton, .animate-border-beam, .animate-float, .animate-pulse-glow {
+    animation: none !important;
+  }
+}
